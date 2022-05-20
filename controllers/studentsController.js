@@ -1,60 +1,40 @@
-const students = require("../data/students");
-
-const Ajv = require("ajv");
-const { request } = require("express");
-const schema = {
-  type: "object",
-  properties: {
-    _id: { type: "string" },
-    fn: {
-      type: "string",
-      pattern: "^[A-Z][a-z]*$",
-    },
-    ln: {
-      type: "string",
-      pattern: "^[A-Z][a-z]*$",
-    },
-    dept: {
-      type: "string",
-      enum: ["SA", "SB", "SC"],
-      maxLength: 2,
-      minLength: 2,
-    },
-    id: {
-      type: "number",
-    },
-  },
-  required: ["fn", "ln", "dept"],
-  maxProperties: 4,
-  minProperties: 4,
-};
-
-const ajv = new Ajv();
-let validator = ajv.compile(schema);
+const Student = require("../models/studentModel");
+const validator = require("../utils/studentValidator");
 
 exports.getAllStudents = (req, res) => {
-  if (students.length > 0) res.json({ result: students });
-  else res.status(404).json({ error: "Not data!" });
+  // if (students.length > 0) res.json({ result: students });
+  const students = Student.fetchStudents();
+  console.log(students.length);
+  if (students.length > 0) res.render("students.ejs", { students });
+  else res.status(404).json({ error: "No Data Available!" });
 };
 
 exports.getStudentById = (req, res) => {
-  console.log(req.params.id);
-  const result = students.find(
-    (student) => student.id === parseInt(req.params.id)
-  );
+  const students = Student.fetchStudents();
+  const result = students.find((student) => student.id === req.params.id);
   if (result) res.json({ result });
-  else res.status(404).json({ error: "Not fount!" });
+  else res.status(404).json({ error: "Record Not Found!" });
 };
 
 exports.createStudent = (req, res) => {
-  console.log(req.body);
   let valid = validator(req.body);
-  console.log(valid);
   if (valid) {
-    req.body.id = students.length + 1;
-    students.push(req.body);
+    // req.body.id = students.length + 1;
+    // students.push(req.body);
+    let student = new Student(req.body);
+    student.saveStudent();
     res.json({ result: req.body });
   } else {
     res.json({ error: "Forbidden Request!" });
+  }
+};
+
+exports.deleteStudent = (req, res) => {
+  let index = students.findIndex((student) => student.id === req.params.id);
+  if (index !== -1) {
+    students.splice(index, 1);
+    res.json({ result: "Record has been deleted!" });
+  } else {
+    res.json({ error: "Record Not Found!" });
   }
 };

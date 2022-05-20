@@ -1,0 +1,86 @@
+[
+  {
+    "fn": "Ashraf",
+    "ln": "Hafiz",
+    "dept": "SA",
+    "empId": 1
+  },
+  {
+    "fn": "Ayman",
+    "ln": "Hafiz",
+    "dept": "SB",
+    "empId": 2
+  },
+  {
+    "fn": "Amal",
+    "ln": "Hafiz",
+    "dept": "SA",
+    "empId": 3
+  },
+  {
+    "fn": "Ahmed",
+    "ln": "Hafiz",
+    "dept": "SB",
+    "empId": 4
+  },
+  {
+    "fn": "Amgad",
+    "ln": "Hafiz",
+    "dept": "SC",
+    "empId": 5
+  },
+  {
+    "fn": "Amr",
+    "ln": "Ashraf",
+    "dept": "SA",
+    "empId": 6
+  },
+  {
+    "fn": "Omar",
+    "ln": "Ashraf",
+    "dept": "SA",
+    "empId": 7
+  },
+  {
+    "fn": "Alia",
+    "ln": "Ashraf",
+    "dept": "SA",
+    "empId": 8
+  },
+  {
+    "fn": "Mohamed",
+    "ln": "Ayman",
+    "dept": "SB",
+    "empId": 9
+  },
+  {
+    "fn": "Menna",
+    "ln": "Ayman",
+    "dept": "SB",
+    "empId": 10
+  },
+  {
+    "fn": "Yousef",
+    "ln": "Ahmed",
+    "dept": "SB",
+    "empId": 11
+  },
+  {
+    "fn": "Yahia",
+    "ln": "Ahmed",
+    "dept": "SB",
+    "empId": 12
+  },
+  {
+    "fn": "Yaseen",
+    "ln": "Ahmed",
+    "dept": "SB",
+    "empId": 13
+  },
+  {
+    "fn": "Zeyad",
+    "ln": "Amgad",
+    "dept": "SC",
+    "empId": 14
+  }
+]
